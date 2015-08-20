@@ -12,8 +12,9 @@
  */
 
 class MainController {
-  constructor() {
-
+  constructor(profiles) {
+    this.profiles = profiles;
+    this.meetupProfile = profiles[0];
   }
 }
 

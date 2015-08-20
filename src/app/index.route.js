@@ -5,7 +5,12 @@ function routerConfig ($stateProvider, $urlRouterProvider) {
       url: '/',
       templateUrl: 'app/main/main.html',
       controllerAs: 'ctrl',
-      controller: 'MainController'
+      controller: 'MainController',
+      resolve: {
+        profiles: (profileService) => {
+          return profileService.getAll();
+        }
+      }
     });
 
   $urlRouterProvider.otherwise('/');
