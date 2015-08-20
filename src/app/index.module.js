@@ -8,6 +8,7 @@ import MainController from './main/main.controller';
 
 import MeetupProfileCardDirective from './directives/meetup-profile-card.directive';
 import ProfileService from './services/profile.service';
+import PopularityFilter from './filters/popularity.filter';
 
 angular.module('meetupAngularWithEs6', ['ui.router'])
   .config(config)
@@ -15,4 +16,5 @@ angular.module('meetupAngularWithEs6', ['ui.router'])
   .run(runBlock)
   .controller('MainController', MainController)
   .service('profileService', ProfileService)
-  .directive('meetupProfileCard', MeetupProfileCardDirective);
+  .directive('meetupProfileCard', MeetupProfileCardDirective)
+  .filter('popularity', PopularityFilter);

@@ -31,7 +31,7 @@ class ProfileService {
         His topic is “Bootstrap your angularJS with ES6”.
         He will also show us how to use Yo generator.
       `,
-      friends_count: 0
+      friends_count: 100000000
     }];
 
     this.$q = $q;

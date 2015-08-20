@@ -38,7 +38,7 @@ class MeetupProfileCardDirective {
       </div>
       <div class="extra content">
           <a>
-            <i class="user icon"></i> Sadly, no friends
+            <i class="user icon"></i> {{ profile.friends_count | popularity }}
           </a>
       </div>
     </div>
