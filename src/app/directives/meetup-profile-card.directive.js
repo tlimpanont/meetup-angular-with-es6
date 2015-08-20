@@ -56,19 +56,16 @@ class MeetupProfileCardDirective {
 
     $image.load(() => {
       this.$timeout( () => {
-        this.animatePosition($card);
+        this.setPosition($card);
       }, 100);
     });
 
   }
-  animatePosition($element) {
+  setPosition($element) {
     $element.position({
       at: 'center center',
       my: 'center center',
-      of: jQuery(window),
-      using: function(to) {
-        $element.stop( true, false ).animate( to, { easing: 'easeOutBounce' } );
-      }
+      of: jQuery(window)
     })
   }
 }
