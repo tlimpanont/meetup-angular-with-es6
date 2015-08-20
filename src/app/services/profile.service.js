@@ -40,6 +40,4 @@ class ProfileService {
     return this.$q.resolve(this.profiles);
   }
 }
-export default ($q) => {
-  return new ProfileService($q);
-};
+export default ProfileService;
