@@ -16,7 +16,7 @@
  */
 
 class MeetupProfileCardDirective {
-  constructor($timeout) {
+  constructor($timeout, meetupProfileCard) {
 
     this.scope = {
       profile: '=',
@@ -26,6 +26,8 @@ class MeetupProfileCardDirective {
     this.link = this.link.bind(this);
 
     this.$timeout = $timeout;
+
+    this.meetupProfileCard = meetupProfileCard;
 
     this.template = `
       <div class="ui card">
@@ -60,6 +62,8 @@ class MeetupProfileCardDirective {
       }, 100);
     });
 
+    $card.css({background: this.meetupProfileCard.backgroundColor});
+
   }
   setPosition($element) {
     $element.position({
@@ -70,6 +74,6 @@ class MeetupProfileCardDirective {
   }
 }
 
-export default ($timeout) => {
-  return new MeetupProfileCardDirective($timeout);
+export default ($timeout, meetupProfileCard) => {
+  return new MeetupProfileCardDirective($timeout, meetupProfileCard);
 };
