@@ -16,11 +16,16 @@
  */
 
 class MeetupProfileCardDirective {
-  constructor() {
+  constructor($timeout) {
 
     this.scope = {
-      profile: '='
+      profile: '=',
+      imageLoaded: '@'
     };
+
+    this.link = this.link.bind(this);
+
+    this.$timeout = $timeout;
 
     this.template = `
       <div class="ui card">
@@ -46,9 +51,28 @@ class MeetupProfileCardDirective {
   }
   link(scope, element, attrs) {
 
+    let $card = jQuery(element).find('.ui.card');
+    let $image = jQuery(element).find('.image img');
+
+    $image.load(() => {
+      this.$timeout( () => {
+        this.animatePosition($card);
+      }, 100);
+    });
+
+  }
+  animatePosition($element) {
+    $element.position({
+      at: 'center center',
+      my: 'center center',
+      of: jQuery(window),
+      using: function(to) {
+        $element.stop( true, false ).animate( to, { easing: 'easeOutBounce' } );
+      }
+    })
   }
 }
 
-export default () => {
-  return new MeetupProfileCardDirective();
+export default ($timeout) => {
+  return new MeetupProfileCardDirective($timeout);
 };
