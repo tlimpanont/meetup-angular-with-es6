@@ -4,7 +4,10 @@ import routerConfig from './index.route';
 
 import runBlock from './index.run';
 
+import MainController from './main/main.controller';
+
 angular.module('meetupAngularWithEs6', ['ui.router'])
   .config(config)
   .config(routerConfig)
-  .run(runBlock);
+  .run(runBlock)
+  .controller('MainController', MainController);
